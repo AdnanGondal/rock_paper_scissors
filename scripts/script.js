@@ -1,6 +1,5 @@
 
-const noRounds = 1;
-game(noRounds);
+game();
 
 
 
@@ -19,7 +18,7 @@ function computerPlay(){
     }
 }
 
-function playRound(playerSelection,compSelection,playerScore,compScore){
+function playRound(playerSelection,compSelection){
     let player1 = playerSelection.toLowerCase();
 
     if (player1==compSelection){
@@ -45,22 +44,31 @@ function playRound(playerSelection,compSelection,playerScore,compScore){
     }
 }
 
-function game(noRounds){
+
+function game(){
         let playerScore = 0;
         let compScore = 0;
+        alert("Welcome to the Rock Paper Scissors game. Press Ok to play.")
         while (playerScore<5 || compScore <5)
         {
             let compMove = computerPlay();
-            let result = playRound("rock",compMove);
+            let userMove = prompt("Choose rock, paper or scissors")
+            let result = playRound(userMove,compMove);
 
-            //checks if above strings have win or loose in them. 
+            //checks if string returned from game function has win or loose in them. 
             if (result.indexOf("Win") != -1) {
                 playerScore++;
-                if (playerScore==5) break;
+                if (playerScore==5) {
+                    alert("You win!")
+                    break;
+                }
             }
             else if (result.indexOf("loose") != -1){
                 compScore++;
-                if (compScore == 5) break;
+                if (compScore == 5) {
+                    alert("Computer Wins")
+                    break;
+                }
             }
 
             alert(result+ `\n Your Score: ${playerScore} \n Computer Score: ${compScore}`)
