@@ -1,9 +1,42 @@
 
-game();
+const movetxt = document.querySelector('#current-move');
+let playerScore = 0;
+let compScore = 0;
+gamePlay();
+displayScore();
 
 
+function gamePlay(){
+    
+    const rockbtn = document.querySelector('#rock-but')
+    rockbtn.addEventListener('click',()=> {
+        let compMove = computerPlay();
+        res=playRound('rock',compMove);
+        movetxt.textContent = res;
+        checkString();
+          
 
+    });
+    
+    const paperbtn = document.querySelector('#paper-but');
+    paperbtn.addEventListener('click',()=> {
+        let compMove = computerPlay();
+        res=playRound('paper',compMove);
+        movetxt.textContent = res;
+        checkString();
+        
+    });
+    
+    const scissorsbtn = document.querySelector('#scissors-but');
+    scissorsbtn.addEventListener('click',()=> {
+        let compMove = computerPlay();
+        res=playRound('paper',compMove);
+        movetxt.textContent = res;
+        checkString();
+        
+    });
 
+}
 
 function computerPlay(){
     no = Math.floor(3 * Math.random());
@@ -44,35 +77,35 @@ function playRound(playerSelection,compSelection){
     }
 }
 
-
-function game(){
-        let playerScore = 0;
-        let compScore = 0;
-        alert("Welcome to the Rock Paper Scissors game. Press Ok to play.")
-        while (playerScore<5 || compScore <5)
-        {
-            let compMove = computerPlay();
-            let userMove = prompt("Choose rock, paper or scissors")
-            let result = playRound(userMove,compMove);
-
-            //checks if string returned from game function has win or loose in them. 
-            if (result.indexOf("Win") != -1) {
-                playerScore++;
-                if (playerScore==5) {
-                    alert("You win!")
-                    break;
-                }
-            }
-            else if (result.indexOf("loose") != -1){
-                compScore++;
-                if (compScore == 5) {
-                    alert("Computer Wins")
-                    break;
-                }
-            }
-
-            alert(result+ `\n Your Score: ${playerScore} \n Computer Score: ${compScore}`)
+function checkString(){
+    //checks if string returned from game function has win or loose in them. 
+    if (movetxt.textContent.indexOf("Win") != -1) {
+        playerScore++;
+        if (playerScore==5) {
+            alert("You win!")
         }
+    }
+    else if (movetxt.textContent.indexOf("loose") != -1){
+        compScore++;
+        if (compScore == 5) {
+            alert("Computer Wins")
+            
+        }
+    }
+}
+
+function displayScore(){
+    const buttons = document.querySelectorAll('.user-input-buts');
+    const userscoretxt = document.querySelector('#user-score');
+    const compscoretext = document.querySelector('#computer-score');
+
+    buttons.forEach((button) => {
+
+        button.addEventListener('click',()=> {
+        userscoretxt.textContent = "Your Score: " + playerScore;
+        compscoretext.textContent = "Computer Score: " + compScore;       
+        });
+    });
 }
 
 
