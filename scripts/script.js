@@ -1,7 +1,9 @@
 
 const movetxt = document.querySelector('#current-move');
+gameFin = false;
 let playerScore = 0;
 let compScore = 0;
+
 gamePlay();
 displayScore();
 
@@ -10,30 +12,35 @@ function gamePlay(){
     
     const rockbtn = document.querySelector('#rock-but')
     rockbtn.addEventListener('click',()=> {
+        if (! gameFin){
         let compMove = computerPlay();
         res=playRound('rock',compMove);
         movetxt.textContent = res;
         checkString();
+        }
           
 
     });
     
     const paperbtn = document.querySelector('#paper-but');
     paperbtn.addEventListener('click',()=> {
+        if (!gameFin){
         let compMove = computerPlay();
         res=playRound('paper',compMove);
         movetxt.textContent = res;
         checkString();
+        }
         
     });
     
     const scissorsbtn = document.querySelector('#scissors-but');
     scissorsbtn.addEventListener('click',()=> {
+        if (!gameFin){
         let compMove = computerPlay();
         res=playRound('paper',compMove);
         movetxt.textContent = res;
         checkString();
-        
+        }
     });
 
 }
@@ -79,18 +86,12 @@ function playRound(playerSelection,compSelection){
 
 function checkString(){
     //checks if string returned from game function has win or loose in them. 
+    
     if (movetxt.textContent.indexOf("Win") != -1) {
         playerScore++;
-        if (playerScore==5) {
-            alert("You win!")
-        }
     }
     else if (movetxt.textContent.indexOf("loose") != -1){
         compScore++;
-        if (compScore == 5) {
-            alert("Computer Wins")
-            
-        }
     }
 }
 
@@ -103,9 +104,40 @@ function displayScore(){
 
         button.addEventListener('click',()=> {
         userscoretxt.textContent = "Your Score: " + playerScore;
-        compscoretext.textContent = "Computer Score: " + compScore;       
+        compscoretext.textContent = "Computer Score: " + compScore; 
+        
+        if (playerScore>=5 || compScore >=5) {
+            userscoretxt.textContent = ""
+            compscoretext.textContent = ""
+            gameFin = true;
+            if (playerScore==5){
+                movetxt.textContent= "Congratulations- you have Won";
+                playerScore++;
+                reset();
+                
+            } else if (compScore==5){
+                movetxt.textContent = "Unluck- you have lost";
+                playerScore++
+                reset();
+            }
+        
+        }     
         });
     });
+
 }
 
+function reset(){
+    
+    if (gameFin) {
+    const container = document.querySelector('#results-div');
+    const resetbut = document.createElement('button');
+    resetbut.textContent = "Restart"
+    resetbut.classList.toggle('user-input-buts');
+    container.appendChild(resetbut);
+    resetbut.addEventListener('click',() => {
+        location.reload(false);
+    });
+    }
+}
 
