@@ -22,14 +22,33 @@ header{
     width: 20em;
     height: 8em;
     border-radius: 5%;
-    margin: 0px 20px 0px 20px  s;
+    margin: 0px 20px 0px 20px;
+    padding: 10px 0px 20px 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
 .user-input-buts:hover{
     transform: scale(1.05)
 }
 
+#rock-but{
+    background-image: url(../images/rock.png);
+    background-size: 60%;
+    
+   
+}
 
+#paper-but{
+    background-image: url(../images/paper.png);
+    background-size: 40%;
+}
+
+#scissors-but{
+    background-image: url(../images/scissors.png);
+    background-size: 75%;
+}
 #results-div{
     padding-top: 25px;
 }
@@ -55,4 +74,16 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.restart-but{
+    font-size: 25px;
+    width: 200px;
+    height: 80px;
+    border-radius: 5%;
+    font-family: 'Krona One', sans-serif;
+}
+
+.restart-but:hover{
+    transform: scale(1.05)
 }
