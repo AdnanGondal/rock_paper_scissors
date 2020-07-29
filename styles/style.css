@@ -5,12 +5,17 @@ body{
     font-family: 'Krona One', sans-serif;
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+}
 main{
     text-align: center;
 }
 
 header{
     text-align: center;
+    width: auto;
 }
 
 #welcome-message{
@@ -86,4 +91,50 @@ footer{
 
 .restart-but:hover{
     transform: scale(1.05)
+}
+
+@media screen and (max-width: 600px), screen and (max-height: 500px) {
+    body{
+        background-color: lightblue;
+        padding: 10px 0px 10px 0px;
+        margin: 25px auto;
+        font-family: 'Krona One', sans-serif;
+        font-size: 10px;
+    }
+
+    #welcome-message{
+        font-size: 10px;
+        padding: 10px 30px 10px 30px;
+    }
+
+    .user-input-buts{
+        width: 10em;
+        height: 4em;
+        border-radius: 5%;
+        margin: 0px 10px 0px 10px;
+        padding: 10px 0px 20px 0px;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+    }
+
+    #results-div{
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    .restart-but{
+        font-size: 10px;
+        width: 100px;
+        height: 40px;
+        border-radius: 5%;
+        font-family: 'Krona One', sans-serif;
+    }
+    
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
 }
