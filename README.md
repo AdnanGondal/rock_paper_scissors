@@ -16,7 +16,7 @@ This is a web based Rock-Paper-Scissors game. The player plays against the compu
 ## Usage
 The site has been deployed to Github Pages and can be accessed via: 
 
-https://adnangondal.github.io/google_remake/
+https://adnangondal.github.io/rock_paper_scissors/
 
 ## Project status
 Development on this project has been put to a stop. 
